@@ -26,3 +26,9 @@ def add_user(user: User):
     users.append(user)
     return user
 
+@app.put("/api/users/{user_id}", status_code=status.HTTP_202_ACCEPTED)
+def add_user(user: User):
+    if any(u.user_id == user.user_id for u in users):
+
+    users.append(user)
+    return user
