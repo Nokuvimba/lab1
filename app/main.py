@@ -27,8 +27,17 @@ def add_user(user: User):
     return user
 
 @app.put("/api/users/{user_id}", status_code=status.HTTP_202_ACCEPTED)
-def add_user(user: User):
-    if any(u.user_id == user.user_id for u in users):
+def update_user(user_id: int, user: User):
+    user.user_id = user_id
 
-    users.append(user)
-    return user
+    for i, u in enumerate(users):
+        if u.user_id == user_id:
+            users[i] = user
+            return user
+
+    raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="user_id not found")
+
+
+
+    
+    
