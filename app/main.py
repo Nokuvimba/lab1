@@ -41,11 +41,13 @@ def update_user(user_id: int, user: User):
 def delete_user(user_id: int):
     for i, u in enumerate(users):
         if u.user_id == user_id:
-            user
-    delete_user(user_id)
-    return {'204 No Content'}
+            users.pop(i)
+            return 
+    
+    raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
 
-    if
+
+    
 
 
 
